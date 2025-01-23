@@ -1,3 +1,3 @@
-baseurl: "/my_website"
+baseurl: ""
 url: "https://technicalgate.github.io"
 theme: jekyll-theme-cayman
