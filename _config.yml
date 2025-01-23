@@ -1,3 +1,5 @@
+title: "test"
+description: "test"
+theme: jekyll-theme-cayman
 baseurl: ""
 url: "https://technicalgate.github.io"
-theme: jekyll-theme-cayman
