@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Fern's Webbed Site</title>
+      
+    <script>
+        let sortDirections = {}
+        function sortTable(whattable, bywhat) {
+            const table = document.getElementById(whattable);
+            const rows = Array.from(table.rows).slice(1);
+            const isNumeric = !isNaN(rows[0].cells[bywhat].innerText);
+      
+            sortDirections[bywhat] = !sortDirections[bywhat];
+            const direction = sortDirections[bywhat] ? 1 : -1;
+      
+            rows.sort((a, b) => {
+                let x = a.cells[bywhat].innerText;
+                let y = b.cells[bywhat].innerText;
+                if (isNumeric) {
+                    return direction * (parseFloat(x) - parseFloat(y));
+                } else {
+                    return direction * x.localeCompare(y);
+                }
+            });
+      
+            for (let row of rows) {
+                table.tBodies[0].appendChild(row);
+            }
+        }
+      </script>
+
+    <style>
+        body{
+            color: chartreuse;
+            background-color: black;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: break-space;
+            text-align: center;
+        }
+    
+        a:link{color: chartreuse;}
+        a:visited{color: chartreuse;}
+    
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .squarething{
+            width: 30%;
+            border-radius: 20px;
+            border: 5px solid chartreuse;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            white-space: break-space;
+            margin: 20px;
+            text-decoration: none;
+        }
+    
+        table, th, td {
+            border:1px solid chartreuse;
+            font-size: large;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <nav style="position: fixed; width: 98%; top: 0px; background-color: rgb(20, 20, 20); text-align: justify;">
+        <a>Fern Howland</a>
+        <a style="float: right; margin-left: 20px;" href="https://github.com/TechnicalGate" target="_blank">
+            <img src="images/github_logo.png" style="width: 24px;" alt="My Github"></a>
+        <a style="float: right; margin-left: 20px;" href="#placeholder">Other Cool Stuff</a>
+        <a style="float: right; margin-left: 20px;" href="#contact">Contact</a>
+        <a style="float: right; margin-left: 20px;" href="#achievements">Achievements</a>
+        <a style="float: right; margin-left: 20px;" class="active" href="#home">Home</a>
+    </nav>
+    
+    <div id="home">
+        <div class="container">
+            <img style="margin-left: 50px;margin-right: 50px; margin-top: 10%; width: 18%;" src="images/me-modified.png">
+            <div style="text-align: left;">
+                <h1>Hi! I'm Fern Howland</h1>
+                <h3>S4 computing student from SST</h3>
+                <h3>Aspiring programmer</h3>
+            </div>
+        </div>
+
+        <h1>About Me</h1>
+        <h3>I am a Secondary 4 student (as of 2025) studying at the School of Science and Technology, Singapore.
+            I love programming, especially Python programming. View my Python projects and games on my Github (top right corner).
+        </h3>
+
+        <h1>Featured Python Projects</h1>
+        <div class="container">
+            <a class="squarething" href="https://github.com/TechnicalGate/Rock-Paper-Scissors-Shooter" target="_blank">
+                <h2>Rock Paper Scissors Shooter</h2>
+                <h3 style="margin: 0;">Play rock paper scissors, with more action</h3>
+                <img style="margin: 0;" src="images/rps.png" width="110%"/>
+            </a>
+            <a class="squarething" href="https://github.com/TechnicalGate/Uno-Python" target="_blank">
+                <h2>Uno</h2>
+                <h3>Play UNO with a simple bot</h3>
+                <img style="margin: 0;" src="images/uno.png" width="60%"/>
+            </a>
+            <a class="squarething" href="https://github.com/TechnicalGate/DeskCat" target="_blank">
+                <h2>DeskCat</h2>
+                <h3>A pettable little cat for your desktop</h3>
+                <img style='margin: 0;' src = images/cat_example.png width="90%"/>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div id="achievements">
+        <h1>Competitions</h1>
+        <table id="ach_table" style="width: 90%;">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('ach_table', 0)" style="font-size: larger; cursor: pointer;">Competition</th>
+                    <th onclick="sortTable('ach_table', 1)" style="font-size: larger; cursor: pointer;">Type</th>
+                    <th onclick="sortTable('ach_table', 2)" style="font-size: larger; cursor: pointer;">Year</th>
+               </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>National School Games Fencing Participation</td>
+                    <td>Fencing</td>
+                    <td>2022</td>
+                </tr>
+
+                <tr>
+                    <td>National School Games Fencing Participation</td>
+                    <td>Fencing</td>
+                    <td>2023</td>
+                </tr>
+
+                <tr>
+                    <td>Opportunity-X Participation</td>
+                    <td>Science</td>
+                    <td>2023</td>
+                </tr>
+
+                <tr>
+                    <td>VJC A*STAR Science Fair</td>
+                    <!--CHECK PHYSICAL CERT-->
+                    <td>Science</td>
+                    <td>2023</td>
+                </tr>
+
+                <tr>
+                    <td>National School Games Fencing Participation</td>
+                    <td>Fencing</td>
+                    <td>2024</td>
+                </tr>
+
+                <tr>
+                    <td>Perse Coding Team Challenge Round 1 Pairs Challenge Merit</td>
+                    <td>Computing</td>
+                    <td>2024</td>
+                </tr>
+
+                <tr>
+                    <td>STEAMunity Stage 1 Burst of STEAM Participation</td>
+                    <td>Science</td>
+                    <td>2024</td>
+                </tr>
+
+                <tr>
+                    <td>National School Games Fencing Participation</td>
+                    <td>Fencing</td>
+                    <td>2025</td>
+                </tr>
+
+                <tr>
+                    <td>STEAMunity Stage 2 Full STEAM Outstanding Presentation Award</td>
+                    <td>Science</td>
+                    <td>2025</td>
+                </tr>
+
+                <tr>
+                    <td>Perse Coding Team Challenge Round 1 Pathfinder Level 2 Distinction</td>
+                    <td>Computing</td>
+                    <td>2025</td>
+                </tr>
+
+                <tr>
+                    <td>National Olympiad in Informatics Participation</td>
+                    <td>Computing</td>
+                    <td>2025</td>
+                </tr>
+
+                <tr>
+                    <td>National Cybersecurity Olympiad Participation</td>
+                    <td>Computing</td>
+                    <td>2025</td>
+                </tr>
+
+                <tr>
+                    <td>Temasek Engineering Olympiad Gold</td>
+                    <td>Computing</td>
+                    <td>2025</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id="contact">
+        <h1>Contact</h1> 
+        <h2>Email: fernhowland@gmail.com</h2>
+    </div>
+
+</body>
+
+</html>
